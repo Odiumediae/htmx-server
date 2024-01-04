@@ -2,11 +2,11 @@ package main
 
 import (
 	"embed"
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 	"os"
+	"time"
 )
 
 //go:embed templates/*
@@ -37,11 +37,10 @@ func main () {
   })
 
   http.HandleFunc("/add-film/", func (w http.ResponseWriter, r *http.Request) {
+    time.Sleep(200 * time.Millisecond)
     title := r.PostFormValue("title")
     director := r.PostFormValue("director")
-    listItem := fmt.Sprintf("<li class=\"list-group-item bg-primary text-white\">%s: %s</li>", title, director)
-    tmpl, _ := template.New("t").Parse(listItem)
-    tmpl.Execute(w, nil)
+		t.ExecuteTemplate(w, "film-list-element", Film{Title: title, Director: director})
   })
 
   log.Println("listening on", port)

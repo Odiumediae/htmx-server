@@ -21,7 +21,6 @@
     <div class="row mt-4 g-4">
       <div class="col-8">
         <h1 class="mb-4">Film List</h1>
-
         <ul class="list-group fs-5 me-5" id="film-list">
           {{ range .Films }} {{ block "film-list-element" .}}
           <li class="list-group-item bg-primary text-white">
@@ -33,7 +32,6 @@
 
       <div class="col-4">
         <h1 class="mb-4">Add Film</h1>
-
         <form
           hx-post="/add-film/"
           hx-target="#film-list"
@@ -58,7 +56,6 @@
               class="form-control"
             />
           </div>
-
           <button type="submit" class="btn btn-primary">
             <span
               class="spinner-border spinner-border-sm htmx-indicator"
